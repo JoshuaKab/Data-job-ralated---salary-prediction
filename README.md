@@ -12,7 +12,7 @@ uvicorn main:app --reload
 
 Open `http://127.0.0.1:8000/docs` to try the API.
 
-## Deploy on Render
+Open https://ai-job-salary-api.onrender.com/docs#/default/predict_salary_predict_post
 
 1. Push this folder, including `main.py`, `requirements.txt`,
    `render.yaml`, and `xgboost_best_model.pkl`, to a Git repository.
