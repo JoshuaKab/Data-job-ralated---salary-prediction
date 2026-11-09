@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Explore an AI salary estimate based on your role, experience, and company."
+    />
+    <title>AI Salary Explorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="AI Salary Explorer home">
+          <span class="brand-mark" aria-hidden="true">↗</span>
+          <span>salary<span class="brand-light">lab</span></span>
+        </a>
+        <a class="api-link" href="/docs">Explore the API <span aria-hidden="true">↗</span></a>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div class="eyebrow"><span class="pulse-dot"></span> AI careers, in focus</div>
+          <h1 id="page-title">Know your worth.<br /><span>Shape what’s next.</span></h1>
+          <p class="intro-copy">
+            Get a salary estimate tailored to your experience, role, and company.
+            A clearer starting point for your next big move.
+          </p>
+        </section>
+
+        <section class="estimator" aria-label="Salary estimate form">
+          <div class="form-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="step-label">YOUR PROFILE <span>01 — 04</span></p>
+                <h2>Build your estimate</h2>
+              </div>
+              <div class="sparkle" aria-hidden="true">✳</div>
+            </div>
+
+            <form id="salary-form">
+              <div class="field-grid">
+                <label class="field">
+                  <span>Experience level</span>
+                  <span class="select-wrap">
+                    <select name="experience_level_label" required>
+                      <option value="Entry-level">Entry level</option>
+                      <option value="Mid-level">Mid level</option>
+                      <option value="Senior-level" selected>Senior level</option>
+                      <option value="Executive-level">Executive level</option>
+                    </select>
+                  </span>
+                </label>
+
+                <label class="field">
+                  <span>AI &amp; data role</span>
+                  <span class="select-wrap">
+                    <select name="role_family" required>
+                      <option>AI Architect</option>
+                      <option>AI Engineer</option>
+                      <option>Analytics Manager</option>
+                      <option>Computer Vision</option>
+                      <option>Data Analyst</option>
+                      <option>Data Engineer</option>
+                      <option selected>Data Scientist</option>
+                      <option>ML Engineer</option>
+                      <option>NLP</option>
+                      <option>Other / Unclassified</option>
+                      <option>Research Scientist</option>
+                    </select>
+                  </span>
+                </label>
+
+                <label class="field">
+                  <span>Employment type</span>
+                  <span class="select-wrap">
+                    <select name="employment_type" required>
+                      <option value="FT" selected>Full-time</option>
+                      <option value="PT">Part-time</option>
+                      <option value="CT">Contract</option>
+                      <option value="FL">Freelance</option>
+                    </select>
+                  </span>
+                </label>
+
+                <label class="field">
+                  <span>Company size</span>
+                  <span class="select-wrap">
+                    <select name="company_size" required>
+                      <option value="S">Small (under 50)</option>
+                      <option value="M" selected>Medium (50–250)</option>
+                      <option value="L">Large (over 250)</option>
+                    </select>
+                  </span>
+                </label>
+              </div>
+
+              <button class="submit-button" type="submit">
+                <span class="button-label">Calculate my estimate</span>
+                <span class="button-arrow" aria-hidden="true">→</span>
+              </button>
+              <p class="privacy-note"><span aria-hidden="true">✦</span> Your details stay on this page.</p>
+            </form>
+          </div>
+
+          <aside class="result-panel" aria-live="polite" aria-atomic="true">
+            <div class="result-topline">
+              <span class="result-icon" aria-hidden="true">✳</span>
+              <span>YOUR ESTIMATE</span>
+              <span class="result-status"><span></span> AI-powered</span>
+            </div>
+            <div class="result-content" id="result-content">
+              <p class="result-placeholder">Your next step<br />starts with a number.</p>
+              <p class="result-helper">Complete your profile to see your estimated annual salary.</p>
+            </div>
+            <div class="result-footer">
+              <span>ANNUAL SALARY</span>
+              <span>USD <span aria-hidden="true">↗</span></span>
+            </div>
+          </aside>
+        </section>
+
+        <footer class="page-footer">
+          <span>Made for people building what’s next.</span>
+          <span>Estimates are directional, not a guarantee.</span>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

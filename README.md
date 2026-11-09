@@ -1,7 +1,8 @@
-# AI Job Salary Prediction API
+# AI Job Salary Explorer
 
-FastAPI wrapper for `xgboost_best_model.pkl`. The model predicts `salary_in_usd`
-from experience level, role family, employment type, and company size.
+An interactive web app and FastAPI wrapper for `xgboost_best_model.pkl`. The
+salary estimator predicts `salary_in_usd` from experience level, role family,
+employment type, and company size.
 
 ## Run locally
 
@@ -10,16 +11,18 @@ python -m pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-Open `http://127.0.0.1:8000/docs` to try the API.
+Open `http://127.0.0.1:8000` to use the salary estimator, or
+`http://127.0.0.1:8000/docs` to explore the API.
 
-Open https://ai-job-salary-api.onrender.com/docs#/default/predict_salary_predict_post
+## Deploy on Render
 
 1. Push this folder, including `main.py`, `requirements.txt`,
    `render.yaml`, and `xgboost_best_model.pkl`, to a Git repository.
 2. In Render, choose **New +** → **Blueprint** and connect that repository.
 3. Render will create the web service from `render.yaml`.
 
-The service provides `GET /health` and `POST /predict`. Example request:
+The app is served at `/`; the API also provides `GET /health` and `POST /predict`.
+Example request:
 
 ```json
 {

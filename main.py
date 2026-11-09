@@ -4,6 +4,8 @@ from typing import Literal
 import joblib
 import pandas as pd
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 FEATURE_NAMES = [
@@ -35,13 +37,16 @@ ROLE_FAMILY_CODES = {
 EMPLOYMENT_TYPE_CODES = {"CT": 0, "FL": 1, "FT": 2, "PT": 3}
 COMPANY_SIZE_CODES = {"L": 0, "M": 1, "S": 2}
 
+MODEL_PATH = Path(__file__).resolve().with_name("xgboost_best_model.pkl")
+STATIC_PATH = Path(__file__).resolve().with_name("static")
+
 app = FastAPI(
     title="AI Job Salary Prediction API",
     description="Predict salary in USD using the trained AI job salary model.",
     version="1.0.0",
 )
+app.mount("/static", StaticFiles(directory=STATIC_PATH), name="static")
 
-MODEL_PATH = Path(__file__).resolve().with_name("xgboost_best_model.pkl")
 model = joblib.load(MODEL_PATH)
 model_features = getattr(model, "feature_names_in_", None)
 if model_features is None or list(model_features) != FEATURE_NAMES:
@@ -76,12 +81,8 @@ class SalaryPredictionResponse(BaseModel):
 
 
 @app.get("/")
-def root() -> dict[str, str]:
-    return {
-        "message": "AI Job Salary Prediction API",
-        "docs": "/docs",
-        "health": "/health",
-    }
+def root() -> FileResponse:
+    return FileResponse(STATIC_PATH / "index.html")
 
 
 @app.get("/health")
